@@ -104,7 +104,64 @@ Upon successful fine-tuning, it will generate the rb5_model, customized for your
 
 ![Description of the image](./output/readme1.png)
 
+## Setting Up Google Cloud Service Account
+### Set up Google Cloud Speech-to-Text credentials
+### Step 1: Set Up Google Cloud Project
+1. **Create a Google Cloud Project**:
+   - Go to the [Google Cloud Console](https://console.cloud.google.com/).
+   - Click on the project drop-down in the top bar.
+   - Click "New Project".
+   - Enter a project name and select a billing account if prompted.
+   - Click "Create".
 
+2. **Select your project**:
+   - After the project is created, select it from the project drop-down in the top bar.
+
+### Step 2: Enable APIs
+1. **Enable necessary APIs**:
+   - Go to the [API Library](https://console.cloud.google.com/apis/library).
+   - Search for the APIs you need (e.g., Google Drive API, Google Sheets API, etc.).
+   - Click on each API and then click "Enable".
+
+### Step 3: Create Service Account
+1. **Navigate to the IAM & Admin section**:
+   - Go to the [IAM & Admin section](https://console.cloud.google.com/iam-admin/serviceaccounts) in the Google Cloud Console.
+   - Click "Service Accounts" in the left-hand menu.
+
+2. **Create a new service account**:
+   - Click "Create Service Account".
+   - Enter a service account name, ID, and description.
+   - Click "Create and Continue".
+
+3. **Grant the service account permissions**:
+   - Select roles that the service account needs. For example, if you need to access Google Cloud Storage, you might grant the "Storage Admin" role.
+   - Click "Continue".
+
+4. **Grant users access to the service account**:
+   - You can skip this step if you don't need to grant any users access to the service account.
+   - Click "Done".
+
+### Step 4: Create and Download Service Account Key
+1. **Generate a key for the service account**:
+   - In the service accounts list, find the service account you created.
+   - Click the "Actions" button (three vertical dots) for that service account.
+   - Click "Manage keys".
+   - Click "Add Key", then select "Create new key".
+   - Choose "JSON" as the key type and click "Create".
+
+2. **Download the key**:
+   - The JSON file containing your service account key will be downloaded automatically. This file contains the information needed to authenticate with Google Cloud services.
+
+### Step 5: Use the Service Account Key
+1. **Secure your key**:
+   - Store this JSON key file securely. Do not share it or check it into source control.
+
+2. **Authenticate with the service account**:
+   - Use this key file in your application to authenticate with Google Cloud services.
+
+By following these steps, you will create a new Google Cloud service account and obtain the necessary credentials for accessing Google Cloud services.
+
+In this project this is used in `app.py` python file.
 ## SLM Model Inference on RB5
 
 - To deploy the custom model and simple UI to the RB5, follow these steps:
@@ -146,6 +203,8 @@ Open a web browser and navigate to the Flask application's address (http://rb5_i
 Demo:
 
   -    ![Demo of the SLM](output/slmdemo2.gif)
+
+
 
 
 
